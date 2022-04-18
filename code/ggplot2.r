@@ -61,3 +61,22 @@ ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
 ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
     geom_point(shape=1, size=1) +
     coord_cartesian(xlim=c(NA, 1000000))
+
+# Smoothing Line ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth()
+
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth()
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro))
