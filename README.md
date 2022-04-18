@@ -22,7 +22,7 @@ After you have R and your favorite editor installed, you should install
 the packages needed today with the following line of code.
 
 ``` r
-install.packages(c('dplyr', 'ggplot2', 'ggthemes', 'ggridges'))
+install.packages(c('dplyr', 'ggplot2', 'ggthemes', 'ggridges', 'readr'))
 ```
 
 ## Code

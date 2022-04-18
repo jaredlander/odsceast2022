@@ -25,7 +25,7 @@ For this course you need a recent version of R. Anything greater than 4.0 is goo
 After you have R and your favorite editor installed, you should install the packages needed today with the following line of code.
 
 ```{r install-packages,eval=FALSE}
-install.packages(c('dplyr', 'ggplot2', 'ggthemes', 'ggridges'))
+install.packages(c('dplyr', 'ggplot2', 'ggthemes', 'ggridges', 'readr'))
 ```
 
 ## Code
