@@ -160,7 +160,6 @@ p + theme_stata() + scale_color_stata()
 p + theme_excel() + scale_color_excel()
 p + theme_excel_new() + scale_color_excel_new()
 
-library(gglander)
 p
 
 
