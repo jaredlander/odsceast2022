@@ -66,7 +66,7 @@ house |>
     filter(Boro %in% c('Brooklyn', 'Queens') & Units <= 100)
 
 
-# Changing the data.frame
+# Changing the data.frame ####
 
 house <- house |> select(-Class)
 house
@@ -90,3 +90,17 @@ house
 house |>
     mutate(Year=Year + 5)
 house
+
+# Sorting Data ####
+
+house |>
+    arrange(Value)
+house |>
+    arrange(-Value)
+
+house |>
+    arrange(Value, Boro)
+house |>
+    arrange(Boro, Value)
+house |>
+    arrange(Neighborhood, Boro)
