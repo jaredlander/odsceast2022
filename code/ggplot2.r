@@ -80,3 +80,31 @@ ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
     coord_cartesian(xlim=c(NA, 1000000)) +
     geom_smooth(color='black') +
     geom_smooth(aes(color=Boro))
+
+# Small Multiples ####
+
+# Trellis
+# Facets
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro), show.legend=FALSE) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro), show.legend=FALSE) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro ) +
+    # theme(legend.position='bottom')
+    theme(legend.position='none')
