@@ -104,3 +104,26 @@ house |>
     arrange(Boro, Value)
 house |>
     arrange(Neighborhood, Boro)
+
+# Counting ####
+
+house |>
+    count(Boro)
+
+house |>
+    count(Boro) |>
+    arrange(-n)
+
+house |>
+    count(Boro, sort=TRUE)
+
+house |>
+    count(Boro, Neighborhood, sort=TRUE)
+
+# SELECT
+#     Boro, Neighborhood, count(*) AS n
+# FROM house
+# GROUP BY Boro, Neighborhood
+# ORDER BY n
+
+
