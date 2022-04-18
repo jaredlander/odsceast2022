@@ -24,3 +24,40 @@ ggplot(house)
 ggplot(house, aes(x=SqFt, y=ValueSqFt))
 
 ggplot(house, aes(x=SqFt, y=ValueSqFt)) + geom_point()
+
+# Add color ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) + geom_point(aes(color=Year))
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Year)) + geom_point()
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) + geom_point()
+
+# Point shape and size ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1)
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1)
+
+# Deal with overplotting ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1, alpha=1/3)
+
+# Zoom in ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_jitter(shape=1, size=1)
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1) +
+    scale_x_continuous(limits=c(NA, 1000000))
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1) +
+    xlim(NA, 1000000)
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt, color=Boro)) +
+    geom_point(shape=1, size=1) +
+    coord_cartesian(xlim=c(NA, 1000000))
