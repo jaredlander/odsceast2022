@@ -66,3 +66,27 @@ house |>
     filter(Boro %in% c('Brooklyn', 'Queens') & Units <= 100)
 
 
+# Changing the data.frame
+
+house <- house |> select(-Class)
+house
+
+house |>
+    mutate(Value/SqFt)
+
+house
+
+house |>
+    mutate(ValuePerSqFt=Value/SqFt)
+
+house |>
+    mutate(ValueSqFt=Value/SqFt, Double=ValueSqFt*2)
+    # mutate(ValueSqFt=Value/SqFt, Double=Value/SqFt*2)
+
+house <- house |>
+    mutate(ValueSqFt=Value/SqFt)
+house
+
+house |>
+    mutate(Year=Year + 5)
+house
