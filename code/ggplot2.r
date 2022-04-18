@@ -100,6 +100,8 @@ ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
     geom_smooth(aes(color=Boro), show.legend=FALSE) +
     facet_wrap( ~ Boro )
 
+# Legends ####
+
 ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
     geom_point(shape=1, size=1, aes(color=Boro)) +
     coord_cartesian(xlim=c(NA, 1000000)) +
@@ -108,3 +110,57 @@ ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
     facet_wrap( ~ Boro ) +
     # theme(legend.position='bottom')
     theme(legend.position='none')
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(aes(color=Boro, size=Value, shape=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(aes(color=Boro, size=Value, shape=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro ) +
+    scale_color_discrete(guide=NULL) +
+    scale_shape(guide=NULL) +
+    theme(legend.position='bottom')
+
+
+# Themes ####
+
+ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro ) +
+    theme(legend.position='none')
+
+library(ggthemes)
+
+p <- ggplot(house, aes(x=SqFt, y=ValueSqFt)) +
+    geom_point(shape=1, size=1, aes(color=Boro)) +
+    coord_cartesian(xlim=c(NA, 1000000)) +
+    geom_smooth(color='black') +
+    geom_smooth(aes(color=Boro)) +
+    facet_wrap( ~ Boro ) +
+    theme(legend.position='none')
+p
+
+p + theme(legend.position='bottom')
+
+p + theme_economist()
+p + theme_economist() + scale_color_economist()
+
+p + theme_stata() + scale_color_stata()
+
+p + theme_excel() + scale_color_excel()
+p + theme_excel_new() + scale_color_excel_new()
+
+library(gglander)
+p
+
+
