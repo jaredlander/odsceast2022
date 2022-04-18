@@ -164,3 +164,79 @@ library(gglander)
 p
 
 
+# Histograms and Densities ####
+
+house
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram()
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(bins=10)
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(bins=100)
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(bins=50)
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(binwidth=15)
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(binwidth=50)
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(binwidth=15)
+
+ggplot(house, aes(x=ValueSqFt, color=Boro)) +
+    geom_histogram(binwidth=15)
+
+ggplot(house, aes(x=ValueSqFt, fill=Boro)) +
+    geom_histogram(binwidth=15)
+
+ggplot(house, aes(x=ValueSqFt, fill=Boro)) +
+    geom_histogram(binwidth=15, show.legend=FALSE) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_density()
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_density(aes(fill=Boro))
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_density(aes(fill=Boro), alpha=1/2)
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_density(aes(fill=Boro), show.legend=FALSE) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=ValueSqFt, fill=Boro)) +
+    geom_histogram(aes(y=..density..), show.legend=FALSE, binwidth=15) +
+    geom_density(show.legend=FALSE) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=ValueSqFt, fill=Boro)) +
+    geom_histogram(aes(y=..density..), show.legend=FALSE, binwidth=15) +
+    geom_density(show.legend=FALSE, alpha=1/3) +
+    facet_wrap( ~ Boro )
+
+ggplot(house, aes(x=ValueSqFt)) +
+    geom_histogram(aes(fill=Boro, y=..density..), binwidth=15, alpha=1/2) +
+    geom_density(aes(color=Boro)) +
+    facet_wrap( ~ Boro , ncol=2) +
+    theme(legend.position='none')
+
+# Barplots ####
+
+house |>
+    count(Boro)
+
+ggplot(house |> count(Boro), aes(x=Boro, y=n)) +
+    geom_col()
+
+ggplot(house, aes(x=Boro)) +
+    geom_bar()
+
+ggplot(house, aes(x=Boro)) +
+    geom_bar() +
+    geom_label(data=house |> count(Boro), aes(y=n, label=n))
