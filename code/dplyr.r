@@ -126,4 +126,63 @@ house |>
 # GROUP BY Boro, Neighborhood
 # ORDER BY n
 
+# Grouped Summarizations ####
 
+house
+mean(house$Value)
+house |> pull(Value) |> mean()
+
+house |>
+    mutate(Root=sqrt(Value))
+
+house |>
+    summarize(mean(Value))
+house |>
+    summarize(AvgValue=mean(Value))
+
+house |>
+    summarize(AvgValue=mean(Value), AvgYear=mean(Year))
+
+house |>
+    summarize(AvgValue=mean(Value), AvgYear=mean(Year, na.rm=TRUE))
+
+c(AvgValue=mean(house$Value), AvgYear=mean(house$Year, na.rm=TRUE))
+
+house |>
+    summarize(across(c(Value, Year), mean, na.rm=TRUE, .names='Avg{.col}'))
+
+house |>
+    group_by(Boro)
+
+house |>
+    group_by(Boro) |>
+    summarize(AvgValue=mean(Value))
+
+house |>
+    group_by(Boro) |>
+    summarize(AvgValue=mean(Value), AvgYear=mean(Year, na.rm=TRUE))
+
+house |>
+    group_by(Boro, Neighborhood) |>
+    summarize(
+        AvgValue=mean(Value), AvgYear=mean(Year, na.rm=TRUE),
+        TotalValue=sum(ValueSqFt),
+        Double=TotalValue*2
+    )
+
+house |>
+    group_by(Boro, Neighborhood) |>
+    summarize(
+        across(c(Value, Year), mean, na.rm=TRUE, .names='Avg{.col}'),
+        TotalValue=sum(ValueSqFt), Double=TotalValue*2
+    )
+
+
+house |>
+    filter(Units <= 100) |>
+    group_by(Boro, Neighborhood) |>
+    summarize(
+        across(c(Value, Year), mean, na.rm=TRUE, .names='Avg{.col}'),
+        TotalValue=sum(ValueSqFt), Double=TotalValue*2
+    ) |>
+    arrange(-AvgValue)
